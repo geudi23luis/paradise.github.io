@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Paradise Destiny Travel Agency</title>
+  <link rel="icon" type="images/Logo" href="images/login.jpg">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    body {
+      background: linear-gradient(to top, #f0f8ff, #cceeff);
+      color: #333;
+      line-height: 1.6;
+    }
+    header {
+      background-color: #0099cc;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    header img.logo-img {
+      width: 150px;
+      height: auto;
+      margin-bottom: 10px;
+    }
+    header h1 {
+      font-size: 2.5rem;
+    }
+    nav {
+      background: #0077aa;
+      text-align: center;
+    }
+    nav a {
+      color: white;
+      padding: 15px 20px;
+      display: inline-block;
+      text-decoration: none;
+    }
+    nav a:hover {
+      background-color: #005f88;
+    }
+    .section {
+      padding: 30px;
+      max-width: 1000px;
+      margin: auto;
+    }
+    .section h2 {
+      color: #0077aa;
+      margin-bottom: 15px;
+    }
+    .jobs {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+    }
+    .card {
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+    }
+    .card h3 {
+      color: #0099cc;
+      margin-bottom: 10px;
+    }
+    footer {
+      background: #0077aa;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      margin-top: 30px;
+    }
+    .gallery img {
+      width: 100%;
+      border-radius: 10px;
+      margin-bottom: 15px;
+    }
+    .gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.gallery-item {
+  text-align: center;
+  background: white;
+  border-radius: 10px;
+  padding: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.gallery-item img {
+  width: 100%;
+  max-width: 280px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.gallery-item p {
+  font-size: 0.95rem;
+  color: #444;
+}
+
+.testimonial-carousel {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.carousel-track {
+  display: flex;
+  animation: slide 25s linear infinite;
+}
+
+.testimonial-card {
+  flex: 0 0 300px;
+  margin: 0 15px;
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+.testimonial-card img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+@keyframes slide {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-100%); }
+}
+
+/* Estilo general de la tabla */
+#offers table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+/* Encabezados */
+#offers thead tr {
+  background-color: #0099cc;
+  color: white;
+  text-align: left;
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+#offers th,
+#offers td {
+  padding: 14px 20px;
+  border-bottom: 1px solid #ddd;
+}
+
+/* Filas alternas para mejor lectura */
+#offers tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+#offers tbody tr:hover {
+  background-color: #d0e8ff;
+  transition: background-color 0.3s ease;
+}
+
+/* Botones de reserva */
+.btn-book {
+  padding: 8px 18px;
+  background-color: #ffcc00;
+  color: #0077aa;
+  font-weight: bold;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  font-size: 1rem;
+  text-align: center;
+  display: inline-block;
+}
+
+.btn-book:hover {
+  background-color: #ffaa00;
+  color: white;
+}
+
+/* Responsive: que la tabla sea scrollable en pantallas pequeñas */
+@media (max-width: 700px) {
+  #offers table, #offers thead, #offers tbody, #offers th, #offers td, #offers tr {
+    display: block;
+  }
+
+  #offers thead tr {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+
+  #offers tbody tr {
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 12px;
+    padding: 10px;
+  }
+
+  #offers tbody td {
+    border: none;
+    padding-left: 50%;
+    position: relative;
+  }
+
+  #offers tbody td:before {
+    position: absolute;
+    left: 15px;
+    width: 45%;
+    padding-right: 10px;
+    white-space: nowrap;
+    font-weight: 600;
+    content: attr(data-label);
+  }
+}
+
+/* General titles */
+section h2 {
+  font-size: 2rem;
+  color: #005b8f;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+/* Mission */
+.mission p {
+  font-size: 1.2rem;
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: 1.6;
+  color: #444;
+  text-align: center;
+}
+
+/* Services */
+.service-list {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 0;
+  list-style: none;
+}
+
+.service-list li {
+  background: #f3f9ff;
+  border-left: 5px solid #0099cc;
+  margin: 10px 0;
+  padding: 10px 15px;
+  border-radius: 5px;
+  font-size: 1.1rem;
+}
+
+/* Team */
+.team-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.team-card {
+  background-color: #ffffff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  padding: 20px;
+  width: 260px;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.team-card h3 {
+  margin-bottom: 10px;
+  color: #0077aa;
+}
+
+.team-card p {
+  font-size: 1rem;
+  color: #333;
+}
+
+#top-places {
+  padding: 60px 20px;
+  background-color: #f9f9f9;
+  text-align: center;
+}
+
+#top-places h2 {
+  font-size: 2rem;
+  margin-bottom: 30px;
+  color: #2c3e50;
+}
+
+.place-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.place-card {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  padding: 15px;
+  transition: transform 0.3s ease;
+}
+
+.place-card:hover {
+  transform: translateY(-5px);
+}
+
+.place-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.place-card h3 {
+  margin-top: 15px;
+  font-size: 1.3rem;
+  color: #1a1a1a;
+}
+
+.place-card p {
+  font-size: 0.95rem;
+  color: #555;
+  margin-top: 8px;
+}
+#our-team {
+  background-color: #eef7f9;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+#our-team h2 {
+  font-size: 2rem;
+  color: #2c3e50;
+  margin-bottom: 20px;
+}
+
+#our-team p {
+  font-size: 1rem;
+  color: #444;
+  max-width: 700px;
+  margin: 0 auto 25px auto;
+}
+
+.team-list {
+  list-style: none;
+  padding: 0;
+  font-size: 1.1rem;
+  color: #333;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 12px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+#job-opportunities {
+  background-color: #fef9f4;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+#job-opportunities h2 {
+  font-size: 2.5rem;
+  color: #2a2a2a;
+  margin-bottom: 10px;
+}
+
+#job-opportunities p {
+  font-size: 1.1rem;
+  color: #444;
+  margin-bottom: 30px;
+}
+
+.job-listings {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.job-card {
+  background-color: #ffffff;
+  border-radius: 15px;
+  padding: 25px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+  text-align: left;
+  transition: transform 0.3s ease;
+}
+
+.job-card:hover {
+  transform: translateY(-5px);
+}
+
+.job-card h3 {
+  color: #005f73;
+  margin-bottom: 10px;
+}
+
+.job-card p {
+  color: #333;
+  margin: 5px 0;
+  font-size: 0.95rem;
+}
+
+.job-card ul {
+  margin-top: 10px;
+  padding-left: 20px;
+  list-style: none;
+}
+
+.job-card ul li {
+  color: #444;
+  margin-bottom: 5px;
+  font-size: 0.95rem;
+  position: relative;
+}
+
+
+  </style>
+  <style>
+  #global-search-bar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: #ffffff;
+    z-index: 10000;
+    padding: 10px 0;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    text-align: center;
+  }
+
+  #global-search-bar input {
+    width: 90%;
+    max-width: 600px;
+    padding: 12px 20px;
+    font-size: 1rem;
+    border: 2px solid #0077aa;
+    border-radius: 30px;
+    outline: none;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  body {
+    padding-top: 70px; /* Ajuste para no tapar el contenido al hacer scroll */
+  }
+</style>
+
+  
+</head>
+<body>
+  <div id="global-search-bar">
+  <input
+    type="text"
+    id="global-search"
+    placeholder="🔍 Search the whole page..."
+  />
+</div>
+
+  <header>
+    <img src="images/logo.jpg" alt="Company Logo" class="logo-img">
+    <h1>Paradise Destiny Travel Agency</h1>
+    <p>Your Paradise, Your Destiny</p>
+  </header>
+
+  <nav>
+    <a href="#mission">Mission</a>
+    <a href="#services">Services</a>
+    <a href="#team">Team</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#testimonials">Testimonials</a>
+    <a href="#jobs">Jobs</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <section id="mission" class="mission">
+  <h2>🌟 Mission Statement</h2>
+  <p>
+    <em>“At <strong>Paradise Destiny</strong>, we believe that traveling opens hearts and minds. Our goal is to create unforgettable journeys, connecting people with cultures, nature, and new experiences while ensuring comfort and safety.”</em>
+  </p>
+</section>
+
+
+  <section id="services" class="services">
+  <h2>🌍 Our Services</h2>
+  <ul class="service-list">
+    <li>✅ Personalized travel packages for families, couples, and solo travelers.</li>
+    <li>✅ Guided tours in multiple languages.</li>
+    <li>✅ Adventure trips (hiking, diving, safaris).</li>
+    <li>✅ Cultural exchange programs.</li>
+    <li>✅ 24/7 customer service and emergency assistance.</li>
+  </ul>
+</section>
+
+
+  <section id="our-team" class="section">
+  <h2>🤝 Our Team</h2>
+  <p>We are a team of 30 passionate professionals dedicated to making your dream trip come true:</p>
+  <ul class="team-list">
+    <li>👩‍💼 8 Travel Agents</li>
+    <li>👨‍🏫 4 Translators (English, Spanish, French)</li>
+    <li>🧭 8 Tour Guides</li>
+    <li>🧑‍💻 5 Web Designer</li>
+    <li>📸 5 Travel Photographer</li>
+  </ul>
+</section>
+
+
+
+ <section id="gallery" class="section">
+  <h2>📸 Travel Gallery</h2>
+  <div class="gallery">
+    <div class="gallery-item">
+      <img src="images/galery1.jpg" alt="Beach Destination">
+      <p>Relaxing beaches in Punta Cana</p>
+    </div>
+    <div class="gallery-item">
+      <img src="images/galery--.jpg" alt="Mountain Hiking">
+      <p>Adventurous hiking in Jarabacoa</p>
+    </div>
+    <div class="gallery-item">
+      <img src="images/galery---.jpg" alt="Cultural Tour">
+      <p>Exploring heritage in Santo Domingo</p>
+    </div>
+  </div>
+</section>
+
+
+ <section id="job-opportunities" class="section">
+  <h2>💼 Job Opportunities</h2>
+  <p>Join our team and be part of unforgettable travel experiences!</p>
+
+  <div class="job-listings">
+
+    <!-- Tour Guide -->
+    <div class="job-card">
+      <h3>🧭 Tour Guide</h3>
+      <p><strong>Requirements:</strong> Friendly personality, knowledge of local culture and history, English/Spanish speaking, 1 year of experience.</p>
+      <p><strong>Responsibilities:</strong> Lead tours, ensure group safety, answer tourist questions, provide a fun and educational experience.</p>
+      <p><strong>Salary:</strong> $900/month</p>
+      <ul>
+        <li>✔ Accident insurance</li>
+        <li>✔ Paid vacation 🌴✈</li>
+        <li>✔ Family travel discounts</li>
+        <li>✔ Free training & health insurance</li>
+      </ul>
+    </div>
+
+    <!-- Translator -->
+    <div class="job-card">
+      <h3>🗣 Translator</h3>
+      <p><strong>Requirements:</strong> Fluent in English, Spanish, and French. Excellent communication skills.</p>
+      <p><strong>Responsibilities:</strong> Assist clients, translate documents and conversations.</p>
+      <p><strong>Salary:</strong> $1,000/month</p>
+      <ul>
+        <li>✔ Accident insurance</li>
+        <li>✔ Paid vacation 🌍🏖</li>
+        <li>✔ Family travel discounts</li>
+        <li>✔ Flexible schedule & bonuses</li>
+      </ul>
+    </div>
+
+    <!-- Web Designer -->
+    <div class="job-card">
+      <h3>💻 Web Designer</h3>
+      <p><strong>Requirements:</strong> Creative mindset, HTML/CSS/JS knowledge, responsive design experience.</p>
+      <p><strong>Responsibilities:</strong> Design and maintain the company’s website and booking platform.</p>
+      <p><strong>Salary:</strong> $1,200/month</p>
+      <ul>
+        <li>✔ Remote work options</li>
+        <li>✔ Paid vacation 💼🏖</li>
+        <li>✔ Performance bonuses</li>
+        <li>✔ Training & development</li>
+      </ul>
+    </div>
+
+    <!-- Travel Photographer -->
+    <div class="job-card">
+      <h3>📸 Travel Photographer</h3>
+      <p><strong>Requirements:</strong> Photography skills, travel passion, portfolio required.</p>
+      <p><strong>Responsibilities:</strong> Capture destination images and company events, edit and organize photo content.</p>
+      <p><strong>Salary:</strong> $950/month</p>
+      <ul>
+        <li>✔ All travel expenses covered</li>
+        <li>✔ Paid vacation 🌅📷</li>
+        <li>✔ Creative freedom</li>
+        <li>✔ Equipment allowance</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+
+  <!-- Agrega esto después de la sección #jobs y antes de #contact -->
+
+  
+
+
+
+<section id="top-places" class="section">
+  <h2>🌴 Top 10 Places to Visit in the Dominican Republic</h2>
+  <div class="place-list">
+    <div class="place-card">
+      <img src="images/lugar1.jpeg" alt="Punta Cana">
+      <h3>Punta Cana</h3>
+      <p>White-sand beaches and luxurious resorts—perfect for relaxation.</p>
+    </div>
+    <div class="place-card">
+      <img src="images/lugar2.jpg" alt="Samaná">
+      <h3>Samaná</h3>
+      <p>Paradise for nature lovers: whales, waterfalls, and adventure.</p>
+    </div>
+    <div class="place-card">
+      <img src="images/lugar3.jpg" alt="Santo Domingo">
+      <h3>Santo Domingo</h3>
+      <p>Historic capital with colonial architecture and vibrant culture.</p>
+    </div>
+    <div class="place-card">
+      <img src="images/lugar4.jpg" alt="Puerto Plata">
+      <h3>Puerto Plata</h3>
+      <p>Beaches, cable cars, and historical sites in one beautiful spot.</p>
+    </div>
+    <div class="place-card">
+      <img src="images/lugar5.webp" alt="Bayahibe">
+      <h3>Bayahibe</h3>
+      <p>Fishing village and the gateway to dreamy Saona Island.</p>
+    </div>
+    <div class="place-card">
+      <img src="images/lugar6.jpg" alt="Jaragua National Park">
+      <h3>Jaragua National Park</h3>
+      <p>UNESCO Biosphere Reserve with wildlife, caves, and lagoons.</p>
+    </div>
+    <div class="place-card">
+      <img src="images/lugar7.jpg" alt="Constanza">
+      <h3>Constanza</h3>
+      <p>Cool mountain air, strawberry fields, and beautiful landscapes.</p>
+    </div>
+    <div class="place-card">
+      <img src="images/lugar8.webp" alt="Las Terrenas">
+      <h3>Las Terrenas</h3>
+      <p>European flair, turquoise waters, and relaxed island vibes.</p>
+    </div>
+    <div class="place-card">
+      <img src="images/lugar9.webp" alt="Montecristi">
+      <h3>Montecristi</h3>
+      <p>Untouched beaches, mangroves, and historic landmarks.</p>
+    </div>
+    <div class="place-card">
+      <img src="images/lugar10.webp" alt="Cabo Rojo">
+      <h3>Cabo Rojo</h3>
+      <p>Red cliffs, turquoise sea, and one of the best sunset views.</p>
+    </div>
+    <div class="place-card">
+      <img src="images/lugar11.webp" alt="Reserva Científica Ébano Verde">
+      <h3>Reserva Científica Ébano Verde</h3>
+      <p>A nature lover’s paradise with hiking trails, endemic species, and fresh mountain air.</p>
+    </div>
+    <div class="place-card">
+      <img src="images/lugar12.jpg" alt="Isla Saona">
+      <h3>Isla Saona</h3>
+      <p>Crystal clear waters, white sandy beaches, and breathtaking natural beauty in a protected park.</p>
+    </div>
+  </div>
+</section>
+
+
+<section id="offers" class="section">
+  <h2>📊 Prices & Travel Offers</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>📍 Destination</th>
+        <th>⏱ Duration</th>
+        <th>💵 Price (USD)</th>
+        <th>📦 Includes</th>
+        <th>✈️ Book</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td data-label="Destination">Punta Cana</td>
+        <td data-label="Duration">3 Days / 2 Nights</td>
+        <td data-label="Price">$399</td>
+        <td data-label="Includes">Hotel, Transport, Meals</td>
+        <td data-label="Book"><button class="btn-book">Book Now</button></td>
+      </tr>
+      <tr>
+        <td data-label="Destination">Samaná</td>
+        <td data-label="Duration">2 Days / 1 Night</td>
+        <td data-label="Price">$279</td>
+        <td data-label="Includes">Hotel, Whale Tour</td>
+        <td data-label="Book"><button class="btn-book">Book Now</button></td>
+      </tr>
+      <tr>
+        <td data-label="Destination">La Romana</td>
+        <td data-label="Duration">4 Days / 3 Nights</td>
+        <td data-label="Price">$499</td>
+        <td data-label="Includes">Hotel, Meals, Tour Guide</td>
+        <td data-label="Book"><button class="btn-book">Book Now</button></td>
+      </tr>
+      <tr>
+        <td data-label="Destination">Bayahibe</td>
+        <td data-label="Duration">1 Day</td>
+        <td data-label="Price">$99</td>
+        <td data-label="Includes">Transport, Lunch, Beach Access</td>
+        <td data-label="Book"><button class="btn-book">Book Now</button></td>
+      </tr>
+      <tr>
+        <td data-label="Destination">Santo Domingo City Tour</td>
+        <td data-label="Duration">1 Day</td>
+        <td data-label="Price">$89</td>
+        <td data-label="Includes">Guide, Museum Entries</td>
+        <td data-label="Book"><button class="btn-book">Book Now</button></td>
+      </tr>
+      <tr>
+        <td data-label="Destination">Jarabacoa Adventure</td>
+        <td data-label="Duration">2 Days / 1 Night</td>
+        <td data-label="Price">$199</td>
+        <td data-label="Includes">Rafting, Cabin Stay</td>
+        <td data-label="Book"><button class="btn-book">Book Now</button></td>
+      </tr>
+      <tr>
+        <td data-label="Destination">Puerto Plata</td>
+        <td data-label="Duration">3 Days / 2 Nights</td>
+        <td data-label="Price">$349</td>
+        <td data-label="Includes">Hotel, Cable Car Ride</td>
+        <td data-label="Book"><button class="btn-book">Book Now</button></td>
+      </tr>
+      <tr>
+        <td data-label="Destination">Constanza Nature Tour</td>
+        <td data-label="Duration">2 Days / 1 Night</td>
+        <td data-label="Price">$189</td>
+        <td data-label="Includes">Transport, Local Guide</td>
+        <td data-label="Book"><button class="btn-book">Book Now</button></td>
+      </tr>
+      <tr>
+        <td data-label="Destination">Bahía de las Águilas</td>
+        <td data-label="Duration">3 Days / 2 Nights</td>
+        <td data-label="Price">$459</td>
+        <td data-label="Includes">Camp, Eco Tour, Meals</td>
+        <td data-label="Book"><button class="btn-book">Book Now</button></td>
+      </tr>
+      <tr>
+        <td data-label="Destination">Cayo Arena</td>
+        <td data-label="Duration">1 Day</td>
+        <td data-label="Price">$109</td>
+        <td data-label="Includes">Boat Ride, Snorkeling</td>
+        <td data-label="Book"><button class="btn-book">Book Now</button></td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+
+
+<section id="employee-testimonials" class="section">
+  <h2>👥 What Our Employees Say</h2>
+  <div class="testimonial-carousel">
+    <div class="carousel-track">
+      <div class="testimonial-card">
+        <img src="images/employee1.jpg" alt="Laura P.">
+        <p><strong>Laura P. – Tour Guide</strong></p>
+        <p>"Working here feels like family. I get to meet amazing people every day and show them our beautiful country."</p>
+      </div>
+      <div class="testimonial-card">
+        <img src="images/employee2.jpg" alt="Carlos M.">
+        <p><strong>Carlos M. – Translator</strong></p>
+        <p>"Paradise Destiny helped me grow as a professional. I love helping travelers communicate and feel at home."</p>
+      </div>
+      <div class="testimonial-card">
+        <img src="images/employee3.jpg" alt="Julia S.">
+        <p><strong>Julia S. – Travel Agent</strong></p>
+        <p>"Planning dream vacations and seeing happy customers makes this job so rewarding."</p>
+      </div>
+      <div class="testimonial-card">
+        <img src="images/employee4.jpg" alt="Pedro R.">
+        <p><strong>Luis R. – Tour Guide</strong></p>
+        <p>"We’re not just guides; we’re storytellers. I love bringing Dominican culture to life."</p>
+      </div>
+      <div class="testimonial-card">
+        <img src="images/employee5.jpg" alt="Elena D.">
+        <p><strong>Elena D. – Office Assistant</strong></p>
+        <p>"I’m proud to be part of a team of 20 passionate professionals who truly care about our clients."</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<section id="testimonials" class="section">
+  <h2>🌟 What Our Clients Say</h2>
+  <div class="testimonial-carousel">
+    <div class="carousel-track">
+      <div class="testimonial-card">
+        <img src="images/cliente1.jpg" alt="Maria G.">
+        <p><strong>Maria G.</strong></p>
+        <p>"The best trip of my life! Everything was perfectly organized."</p>
+      </div>
+      <div class="testimonial-card">
+        <img src="images/cliente2.jpg" alt="Daniel V.">
+        <p><strong>Daniel V.</strong></p>
+        <p>"Excellent service. The staff really made me feel special."</p>
+      </div>
+      <div class="testimonial-card">
+        <img src="images/cliente3.jpg" alt="Lucía M.">
+        <p><strong>Lucía M.</strong></p>
+        <p>"The guides and local experiences were unforgettable."</p>
+      </div>
+      <div class="testimonial-card">
+        <img src="images/cliente4.jpg" alt="Michael B.">
+        <p><strong>Michael B.</strong></p>
+        <p>"Great prices and amazing customer service!"</p>
+      </div>
+      <div class="testimonial-card">
+        <img src="images/cliente5.jpg" alt="Rachel K.">
+        <p><strong>Rachel K.</strong></p>
+        <p>"Our honeymoon package was perfect from start to finish."</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+  <section id="contact" class="section">
+    <h2>📞 Contact Us</h2>
+    <p>Email: info@paradisedestiny.com</p>
+    <p>Phone: +1 (849) 581-8492</p>
+    <p>Location: San Pedro de macoris, Dominican Republic</p>
+    <p>Follow us on social media for updates and offers!</p>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Paradise Destiny Travel Agency | Designed with ❤️ for your dreams</p>
+  </footer>
+
+  <script>
+  const carousel = document.querySelector('.carousel-track');
+  const container = document.querySelector('.testimonial-carousel');
+
+  container.addEventListener('mouseover', () => {
+    carousel.style.animationPlayState = 'paused';
+  });
+
+  container.addEventListener('mouseout', () => {
+    carousel.style.animationPlayState = 'running';
+  });
+</script>
+
+
+<script>
+  document.getElementById("global-search").addEventListener("input", function () {
+    const searchValue = this.value.toLowerCase();
+    const excludedIds = ["header", "footer", "global-search-bar"];
+    const bodyChildren = Array.from(document.body.children);
+
+    bodyChildren.forEach(child => {
+      if (excludedIds.includes(child.id)) return;
+
+      const text = child.innerText.toLowerCase();
+      child.style.display = text.includes(searchValue) ? "block" : "none";
+    });
+  });
+</script>
+
+
+</body>
+</html>
